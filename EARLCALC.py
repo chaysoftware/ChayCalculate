@@ -14,17 +14,20 @@ root.resizable(width=False, height=False)
 entryCalc = tk.Entry(root, bd=0, justify=tk.RIGHT, font=('Arial', 14))
 entryCalc.grid(row=0, column=0, columnspan=4, stick='we', padx=5)
 
+
 # Получение цифр
 def sym(num):
     value = entryCalc.get() + str(num)
     entryCalc.delete(0, tk.END)
-    entryCalc.insert(0, value )
+    entryCalc.insert(0, value)
+
 
 # Получение операций
 def oper(operation):
     value = entryCalc.get() + str(operation)
     entryCalc.delete(0, tk.END)
     entryCalc.insert(0, value)
+
 
 # Решение
 def calculate():
@@ -35,25 +38,34 @@ def calculate():
     entryCalc.delete(0, tk.END)
     entryCalc.insert(0, eval(value))
 
+
 # Чистка
 def clear():
     entryCalc.delete(0, tk.END)
 
+
 # Ссылка на sym
 def make_number(num):
-    return Button(root, text=num, bd=0, command=lambda : sym(num), font=('Arial', 14))
+    return Button(root, text=num, bd=0, command=lambda: sym(num),
+    font=('Arial', 14), bg='#303030', fg='white')
+
 
 # Ссылка на oper
 def make_operation(operation):
-    return Button(root, text=operation, bd=0, command=lambda : sym(operation), font=('Arial', 14))
+    return Button(root, text=operation, bd=0, command=lambda: sym(operation),
+     font=('Arial', 14), bg='#303030', fg='white')
+
 
 # Ссылка на calculate
 def make_res(operation):
-    return Button(root, text=operation, bd=0, command=calculate)
+    return Button(root, text=operation, bd=0,
+    command=calculate, bg='#303030', fg='white')
+
 
 # Ссылка на clear
 def make_clear(operation):
-    return Button(root, text=operation, bd=0, command=clear)
+    return Button(root, text=operation, bd=0,
+     command=clear, bg='#303030', fg='white')
 
 # Выложить на экран цифровой блок
 make_number('1').grid(row=1, column=0, stick="wens", padx=5, pady=5)
